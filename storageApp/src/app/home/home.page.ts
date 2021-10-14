@@ -10,6 +10,7 @@ import { StorageService } from '../services/storage.service';
 export class HomePage {
 
   listaUsuarios: Usuario[] = [];
+  usuario: Usuario = new Usuario();
   constructor(private storageService: StorageService) {}
 
   async buscarUsuarios() {
@@ -19,6 +20,12 @@ export class HomePage {
   async excluirCadastro(email: string) {
     await this.storageService.remove(email);
     this.buscarUsuarios();
+  }
+
+  async exibirCadastro(email: string) {
+    this.usuario = await this.storageService.get(email);
+    alert('Nome:' + this.usuario.nome + '\n Email:' + this.usuario.email + '\n Telefone:' + this.usuario.telefone +
+    '\nEndereço:' + this.usuario.endereco );
   }
 
   ionViewDidEnter(){

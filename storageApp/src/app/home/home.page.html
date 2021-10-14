@@ -30,6 +30,9 @@
     </ion-item>
 
     <ion-item-options side="end">
+      <ion-item-option color="primary" (click)="exibirCadastro(user.email)">
+        <ion-icon slog="icon-only" name="create-outline"></ion-icon>
+      </ion-item-option>
       <ion-item-option color="danger" (click)="excluirCadastro(user.email)">
         <ion-icon slog="icon-only" name="trash-outline"></ion-icon>
       </ion-item-option>

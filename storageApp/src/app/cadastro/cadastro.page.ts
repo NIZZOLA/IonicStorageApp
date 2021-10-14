@@ -29,6 +29,14 @@ export class CadastroPage implements OnInit {
       { tipo: 'required', mensagem: 'O campo E-mail é obrigatório.' },
       { tipo: 'email', mensagem: 'E-mail Inválido.' },
     ],
+    telefone: [
+      { tipo: 'required', mensagem: 'O campo Telefone é obrigatório.' },
+      { tipo: 'telefone', mensagem: 'Telefone Inválido.' },
+    ],
+    endereco: [
+      { tipo: 'required', mensagem: 'O campo Endereço é obrigatório.' },
+      { tipo: 'endereco', mensagem: 'Endereço Inválido.' },
+    ],
     senha: [
       { tipo: 'required', mensagem: 'É obrigatório confirmar senha.' },
       { tipo: 'minlength', mensagem: 'A senha deve ter pelo menos 6 caracteres.', },
@@ -48,6 +56,8 @@ export class CadastroPage implements OnInit {
       nome: ['', Validators.compose([Validators.required, Validators.minLength(3)])],
       cpf: ['', Validators.compose([Validators.required, CpfValidator.cpfValido])],
       email: ['', Validators.compose([Validators.required, Validators.email])],
+      telefone: ['', Validators.compose([Validators.required, Validators.maxLength(15)])],
+      endereco: ['', Validators.compose([Validators.required, Validators.minLength(5), Validators.maxLength(100)])],
       senha: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(8)])],
       confirmaSenha: ['', Validators.compose([Validators.required, Validators.minLength(6), Validators.maxLength(8)])]
     },{
@@ -64,6 +74,8 @@ export class CadastroPage implements OnInit {
       this.usuario.cpf = this.formCadastro.value.cpf;
       this.usuario.email = this.formCadastro.value.email;
       this.usuario.senha = this.formCadastro.value.senha;
+      this.usuario.telefone = this.formCadastro.value.telefone;
+      this.usuario.endereco = this.formCadastro.value.endereco;
       await this.storageService.set(this.usuario.email, this.usuario);
       this.route.navigateByUrl('/home');
     }    else{

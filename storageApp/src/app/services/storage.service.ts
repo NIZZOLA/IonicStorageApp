@@ -26,7 +26,7 @@ export class StorageService {
   }
 
   public get(key: string) {
-    this._storage?.get(key);
+    return this._storage?.get(key);
   }
 
   public remove(key: string) {
